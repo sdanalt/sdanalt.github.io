@@ -1,1 +1,24 @@
-"Hello World" 
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Control Buttons</title>
+    <script>
+        function writeToServer(status) {
+            const data = new FormData();
+            data.append('status', status);
+
+            fetch('write_to_file.php', {
+                method: 'POST',
+                body: data
+            })
+            .then(response => response.text())
+            .then(message => alert(message))
+            .catch(error => console.error('Error:', error));
+        }
+    </script>
+</head>
+<body>
+    <button onclick="writeToServer('1')">On</button>
+    <button onclick="writeToServer('0')">Off</button>
+</body>
+</html>
